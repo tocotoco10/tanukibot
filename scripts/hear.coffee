@@ -10,4 +10,5 @@ rtxt1 = [
 
 module.exports = (robot) ->
   robot.hear /(たぬき|タヌキ|そば|うどん)/, (msg) ->
-	    msg.send msg.random rtxt1
+    msg.send msg.random rtxt1
+
