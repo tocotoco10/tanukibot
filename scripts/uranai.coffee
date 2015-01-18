@@ -16,16 +16,24 @@
 #		msg.send "今日の運勢は『#{result}』だポン。"
 
 uranai = [
-  "今日の運勢は『大吉』だポン。",
-	"今日の運勢は『中吉』らしいぽん。",
-	"今日の運勢は『小吉』だポン。",
-	"今日の運勢は『末吉』ポン。",
-	"今日の運勢は『凶』だポン。",
-	"今日の運勢は『大凶』だポン。"
+  "『大吉』だポン。",
+	"『中吉』らしいぽん。",
+	"『小吉』だポン。",
+	"『末吉』ポン。",
+	"『凶』だポン。",
+	"『大凶』だポン。"
 ]
 
 module.exports = (robot) ->
-  robot.respond /今日の運勢/i, (msg) ->
-	  msg.send msg.random uranai
+  robot.respond /(今日|きょう)の運勢/i, (msg) ->
+    msg.send "#{msg.message.user.name}ちゃんの運勢は \n"
+    msg.send msg.random uranai
+
+#    text =
+#		"今日の#{msg.message.user.name}ちゃんの運勢は \n"+
+#    "123 \n"+
+#		"だポン。"
+#
+#   msg.send text
 
 
