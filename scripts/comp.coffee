@@ -9,6 +9,6 @@ rtxt = [
 ]
 
 module.exports = (robot) ->
-  robot.hear /(完了し|終わり|終了し|)(ました|たで|ましたわ|やで)/, (msg) ->
+  robot.hear /(.*)(完了し|終わり|終了し)(.*)/, (msg) ->
 		  msg.send msg.random rtxt
 
