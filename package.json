@@ -22,5 +22,10 @@
   },
   "engines": {
     "node": "0.10.x"
+  },
+  "devDependencies": {
+    "async": "^0.9.0",
+    "date-utils": "^1.2.16",
+    "xml2json": "^0.5.1"
   }
 }
