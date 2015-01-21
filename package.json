@@ -6,7 +6,7 @@
   "description": "test2slack",
   "dependencies": {
     "async": "^0.9.0",
-		"date-utils": "^1.2.16",
+    "date-utils": "^1.2.16",
     "hubot": "^2.11.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.1.2",
@@ -20,8 +20,9 @@
     "hubot-scripts": "^2.5.16",
     "hubot-shipit": "^0.1.1",
     "hubot-slack": "^3.2.1",
+    "hubot-weather-ja": "0.0.1",
     "hubot-youtube": "^0.1.2",
-		"xml2json": "^0.5.1"
+    "xml2json": "^0.4.0"
   },
   "engines": {
     "node": "0.10.x"
