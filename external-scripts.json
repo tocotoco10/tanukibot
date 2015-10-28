@@ -11,5 +11,7 @@
   "hubot-rules",
   "hubot-shipit",
   "hubot-weather-ja",
+	"cron",
+	"time",
   "hubot-youtube"
 ]
