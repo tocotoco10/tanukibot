@@ -1,9 +1,12 @@
 cronJob = require('cron').CronJob
 
 module.exports = (robot) ->
-  new cronJob('0 17 1 * * 1-5',  =>
-	    envelope = {room: 'general'}
-			say      = 'cronテスト'
-	    robot.send envelope, say, null, true
-  )
+  send = (room, msg) ->
+	  response = new robot.Response(robot, {user : {id : -1, name : room}
+		response.send msg
+
+  new cronJob('0 31 1 * * 1-5', ()  ->
+	  send 'general', "cronテスト"
+  ).start()
+
 
