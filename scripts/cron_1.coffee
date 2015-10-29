@@ -6,8 +6,8 @@ cron = require('cron').CronJob
 
 module.exports = (robot) ->
 
-  new cron('00 20 2 * * 1-5', () ->
-    say = "定時退社の時間になりました。"
+  new cron '0 35 2 * * 1-5', () ->
+#    say = "定時退社の時間になりました。"
 #		+ random [
 #			      "毎日遅くまでご苦労様です。今日ぐらいは早く帰ってもいいんじゃないですか。"
 #						"早く帰ってゆっくりお風呂に入れば疲れもとれますよ。"
@@ -28,6 +28,6 @@ module.exports = (robot) ->
 #						"え？もう帰るんですか？"
 #						"疾風（はや）く孵（かえ）れ。"
 #   ]
-		user = {room: "general"}
-		robot.send user, say).start()
+#		user = {room: "general"}
+		robot.send {room: "general"}, "cron", null, true, "Asia/Tokyo"
 		
