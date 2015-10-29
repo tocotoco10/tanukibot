@@ -1,12 +1,12 @@
 # Description:
 #   No overtime by node-cron.
 
-cron = require('cron').CronJob
+cron = require('cron').CronJob;
 #random = require('hubot').Response::random
 
 module.exports = (robot) ->
 
-  new cron '0 35 2 * * 1-5', () ->
+  new cron( '0 38 2 * * 1-5', () ->
 #    say = "定時退社の時間になりました。"
 #		+ random [
 #			      "毎日遅くまでご苦労様です。今日ぐらいは早く帰ってもいいんじゃないですか。"
@@ -29,5 +29,5 @@ module.exports = (robot) ->
 #						"疾風（はや）く孵（かえ）れ。"
 #   ]
 #		user = {room: "general"}
-		robot.send {room: "general"}, "cron", null, true, "Asia/Tokyo"
+		robot.send {room: "general"}, "cron", null, true, "Asia/Tokyo");
 		
