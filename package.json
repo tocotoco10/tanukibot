@@ -32,6 +32,7 @@
     "hubot-slack": "^3.2.1",
     "hubot-weather-ja": "0.0.1",
     "hubot-youtube": "^0.1.2",
+    "moment": "^2.10.6",
     "request": "^2.51.0",
     "time": "^0.11.4",
     "xml2json": "^0.4.0"
