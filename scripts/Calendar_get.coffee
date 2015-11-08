@@ -124,9 +124,9 @@ module.exports = (robot) ->
    # 朝の
  #  cronJob = new cronJob(
 
-  new cronJob('0 40 0 * * *',() =>
-    OnTick: ->
-      authorize getEvents, robot
+  new cronJob('0 47 0 * * *',() =>
+#    OnTick: ->
+#      authorize getEvents, robot
     robot.send {room:"general"},"取れますか？",null,true,"Asia/Tokyo"
     ).start
 
