@@ -95,7 +95,7 @@ getEvents = (auth, robot) ->
     events = response.items
     if events.length == 0
       # console.log 'No upcoming events found.'
-      robot.send {room: "#general"}, "#{message}ありません。"
+      robot.send {room: "general"}, "#{message}ありません。"
     else
       # console.log 'Upcoming 10 events:'
       i = 0
@@ -110,9 +110,10 @@ getEvents = (auth, robot) ->
           message = "#{message}#{event.summary}\n"
         i++
       # console.log "#{message}があります。"
-      robot.send {room: "#general"}, "#{message}です。"
+      robot.send {room: "general"}, "#{message}です。"
     return
   return
+
 
 
 # hubot部分
@@ -120,12 +121,14 @@ request = require('request');
 cronJob = require('cron').CronJob;
 
 module.exports = (robot) ->
-  # 朝の
-  cronJob = new cronJob(
-    cronTime: "0 18 23 * * *" # 秒 分 時 日 月 週
-    start: true # すぐに実行するか
-    timeZone: "Asia/Tokyo"
-    onTick: ->
+   # 朝の
+ #  cronJob = new cronJob(
+
+  new cronJob('0 40 0 * * *',() =>
+    OnTick: ->
       authorize getEvents, robot
-    )
+    robot.send {room:"general"},"取れますか？",null,true,"Asia/Tokyo"
+    ).start
+
+
 
