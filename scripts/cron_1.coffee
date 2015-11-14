@@ -16,11 +16,13 @@ post_topic_news = (robot, limit) ->
 			  title = entry.title
 				link = entry.id
 				article += "{link}\n" unless /~PR.*/.test(title)
-		  robot.send {room:"general"}, article, null, true, "Asis/Tokyo"
+#		  robot.send {room:"general"}, article, null, true, "Asis/Tokyo"
+      robot.send {room:"general"}, article
 
 module.exports = (robot) ->
-  new cronJob(  '0 41 2 * * *', () =>
-	     post_topic_news(robot,limit), null, true, "Asia/Tokyo"
+  new cronJob(  '0 54 2 * * *', () =>
+    robot.send post_topic_news(robot,limit), null, true, "Asia/Tokyo"
+#	    post_topic_news(robot,limit), null, true, "Asia/Tokyo"
 #      robot.send {room: "general"}, "タイマーのテストぽぽーん", null, true, "Asia/Tokyo"
 #       null, true, "Asis/Tokyo"
   ).start()
