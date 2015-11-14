@@ -4,9 +4,9 @@ request = require 'request'
 limit   = 3
 
 post_topic_news = (robot, limit) ->
-  url = 'http://feed.rssad.jp/rss/nikkansports/professional/atom.xml'
+#  url = 'http://feed.rssad.jp/rss/nikkansports/professional/atom.xml'
 	options =
-	  url: url
+	  url: 'http://feed.rssad.jp/rss/nikkansports/professional/atom.xml'
 		timeout: 2000
 		headers: {'user-agent': 'node title fetcher'}
   request options, (error, response, body) ->
@@ -19,7 +19,7 @@ post_topic_news = (robot, limit) ->
 #		  robot.send {room:"general"}, article, null, true, "Asis/Tokyo"
 
 module.exports = (robot) ->
-  new cronJob(  '0 31 2 * * *', () =>
+  new cronJob(  '0 33 2 * * *', () =>
 	     post_topic_news(robot,limit)
 #      robot.send {room: "general"}, "タイマーのテストぽぽーん", null, true, "Asia/Tokyo"
       robot.send {room: "general"}, article, null, true, "Asis/Tokyo"
