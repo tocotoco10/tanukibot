@@ -35,7 +35,8 @@
     "moment": "^2.10.6",
     "request": "^2.51.0",
     "time": "^0.11.4",
-    "xml2json": "^0.4.0"
+    "xml2json": "^0.4.0",
+    "xmljson": "^0.2.0"
   },
   "engines": {
     "node": "0.10.x"
