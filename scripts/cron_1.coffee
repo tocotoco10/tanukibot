@@ -5,14 +5,16 @@ module.exports = (robot) ->
       robot.send {room: "general"}, "タイマーのテストぽぽーん", null, true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 10 21 * * *', () =>
+  new cronJob( '0 17 21 * * *', () =>
       robot.send {room:"general"}, "いち！", null ,true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 11 21 * * *', () =>
+  new cronJob( '0 18 21 * * *', () =>
       robot.send {room:"general"}, "にぃ！", null ,true, "Asia/Tokyo"
   ).start()
 
+
+moduke.exports = (robot) ->
   robot.respond /start cron_1/i, (msg) ->
   	msg.send "『CronJob_1』ジョブ開始しますね..."
 	  cronJob.start()
