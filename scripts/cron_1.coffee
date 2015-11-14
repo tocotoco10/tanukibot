@@ -6,7 +6,7 @@ url     = ""
 options = ""
 
 post_topic_news = (robot, limit) ->
-  url = "http://news.yahoo.co.jp/pickup/rss.xml"
+  url = "http://feed.rssad.jp/rss/nikkansports/professional/atom.xml"
 	options =
 	  url: url
 		timeout: 2000
@@ -21,7 +21,7 @@ post_topic_news = (robot, limit) ->
 #		  robot.send {room:"general"}, article, null, true, "Asis/Tokyo"
 
 module.exports = (robot) ->
-  new cronJob(  '0 10 2 * * *', () =>
+  new cronJob(  '0 15 2 * * *', () =>
 	     post_topic_news(robot,limit)
 #      robot.send {room: "general"}, "タイマーのテストぽぽーん", null, true, "Asia/Tokyo"
       robot.send {room: "general"}, article, null, true, "Asis/Tokyo"
