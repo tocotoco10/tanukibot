@@ -5,10 +5,10 @@ module.exports = (robot) ->
       robot.send {room: "general"}, "タイマーのテストぽぽーん", null, true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 21 20 * * *', () =>
+  new cronJob( '0 22 20 * * *', () =>
       robot.send {room:"general"}, "いち！", null ,true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 22 20 * * *', () =>
+  new cronJob( '0 23 20 * * *', () =>
       robot.send {room:"general"}, "にぃ！", null ,true, "Asia/Tokyo"
-
+  ).start()
