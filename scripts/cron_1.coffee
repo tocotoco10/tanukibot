@@ -17,11 +17,11 @@ post_topic_news = (robot, limit) ->
 			for id, entry of data["feed"].entry when id < limit
 			  title = entry.title
 				link = entry.id
-				article += "#{link}\n" unless /~PR.*/.test(title)
+				article += "{link}\n" unless /~PR.*/.test(title)
 #		  robot.send {room:"general"}, article, null, true, "Asis/Tokyo"
 
 module.exports = (robot) ->
-  new cronJob(  '0 15 2 * * *', () =>
+  new cronJob(  '0 20 2 * * *', () =>
 	     post_topic_news(robot,limit)
 #      robot.send {room: "general"}, "タイマーのテストぽぽーん", null, true, "Asia/Tokyo"
       robot.send {room: "general"}, article, null, true, "Asis/Tokyo"
