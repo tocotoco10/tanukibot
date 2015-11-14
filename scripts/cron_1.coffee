@@ -3,15 +3,15 @@ cronJob = require('cron').CronJob
 module.exports = (robot) ->
   new cronJob(  '0 59 22 * * *', () =>
       robot.send {room: "general"}, "タイマーのテストぽぽーん", null, true, "Asia/Tokyo"
-  ).start()
+  )
 
-  new cronJob( '0 45 20 * * *', () =>
+  new cronJob( '0 00 21 * * *', () =>
       robot.send {room:"general"}, "いち！", null ,true, "Asia/Tokyo"
-  ).start()
+  )
 
-  new cronJob( '0 46 20 * * *', () =>
+  new cronJob( '0 01 21 * * *', () =>
       robot.send {room:"general"}, "にぃ！", null ,true, "Asia/Tokyo"
-  ).start()
+  )
 
 module.exports = (robot) ->
   robot.respond /start cron_1/i, (msg) ->
