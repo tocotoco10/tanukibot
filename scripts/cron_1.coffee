@@ -11,17 +11,18 @@ post_topic_news = (robot, limit) ->
 		headers: {'user-agent': 'node title fetcher'}
   request options, (error, response, body) ->
 	  to_json body, (err, data) =>
-		  article = "☆YYahooトピック☆ \n"
+		  article = "☆Yahooトピック☆ \n"
 			for id, entry of data["feed"].entry when id < limit
 			  title = entry.title
-				link = entry.id
+				link = entry.idi
 				article += "{link}\n" unless /~PR.*/.test(title)
 #		  robot.send {room:"general"}, article, null, true, "Asis/Tokyo"
       robot.send {room:"general"}, article
 
 module.exports = (robot) ->
-  new cronJob(  '0 54 2 * * *', () =>
-    robot.send post_topic_news(robot,limit), null, true, "Asia/Tokyo"
+  new cronJob(  '0 09 3 * * *', () =>
+    robot.send post_topic_news(robot,limit)
+  , null, true, "Asia/Tokyo"
 #	    post_topic_news(robot,limit), null, true, "Asia/Tokyo"
 #      robot.send {room: "general"}, "タイマーのテストぽぽーん", null, true, "Asia/Tokyo"
 #       null, true, "Asis/Tokyo"
