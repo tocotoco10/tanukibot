@@ -5,18 +5,18 @@ module.exports = (robot) ->
       robot.send {room: "general"}, "タイマーのテストぽぽーん", null, true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 02 21 * * *', () =>
+  new cronJob( '0 10 21 * * *', () =>
       robot.send {room:"general"}, "いち！", null ,true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 03 21 * * *', () =>
+  new cronJob( '0 11 21 * * *', () =>
       robot.send {room:"general"}, "にぃ！", null ,true, "Asia/Tokyo"
   ).start()
 
   robot.respond /start cron_1/i, (msg) ->
-	msg.send "『CronJob_1』ジョブ開始しますね..."
-	cronJob.start()
+  	msg.send "『CronJob_1』ジョブ開始しますね..."
+	  cronJob.start()
 	
 	robot.respond /stop cron_1/i, (msg) ->
-	msg.send "『CronJob_1』ジョブ停止しますね..."
-	cronJob.stop()
+	  msg.send "『CronJob_1』ジョブ停止しますね..."
+	  cronJob.stop()
