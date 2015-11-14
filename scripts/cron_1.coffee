@@ -2,15 +2,15 @@ cronJob = require('cron').CronJob
 
 module.exports = (robot) ->
   new cronJob(  '0 59 22 * * *', () =>
-      robot.send {room: "general"}, "タイマーのテストぽぽーん", null, false, "Asia/Tokyo"
+      robot.send {room: "general"}, "タイマーのテストぽぽーん", null, true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 41 20 * * *', () =>
-      robot.send {room:"general"}, "いち！", null ,false, "Asia/Tokyo"
+  new cronJob( '0 45 20 * * *', () =>
+      robot.send {room:"general"}, "いち！", null ,true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 42 20 * * *', () =>
-      robot.send {room:"general"}, "にぃ！", null ,false, "Asia/Tokyo"
+  new cronJob( '0 46 20 * * *', () =>
+      robot.send {room:"general"}, "にぃ！", null ,true, "Asia/Tokyo"
   ).start()
 
 module.exports = (robot) ->
