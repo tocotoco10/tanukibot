@@ -3,7 +3,7 @@ to_json = require('xmljson').to_json
 request = require 'request'
 limit   = 3
 
-post_topic_news = (robot, limit) ->
+post_news = (robot, limit) ->
 #  url = 'http://feed.rssad.jp/rss/nikkansports/professional/atom.xml'
 	options =
 	  url: 'http://news.yahoo.co.jp/pickup/rss.xml'
@@ -20,10 +20,10 @@ post_topic_news = (robot, limit) ->
       robot.send {room:"general"}, article
 
 module.exports = (robot) ->
-  new cronJob('0 51 1 * * *', () =>
+  new cronJob('0 53 1 * * *', () =>
 #      robot.send {room:"general"}, "さーん！", null ,true, "Asia/Tokyo"
 #      robot.send post_topic_news(robot,limit)
-      post_topic_news(robot,limit), null, true, "Asia/Tokyo"
+      post_news(robot, limit), null, true, "Asia/Tokyo"
 #	    post_topic_news(robot,limit), null, true, "Asia/Tokyo"
 #      robot.send {room: "general"}, "タイマーのテストぽぽーん", null, true, "Asia/Tokyo"
 #       null, true, "Asis/Tokyo"
