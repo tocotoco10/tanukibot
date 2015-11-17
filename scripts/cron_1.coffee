@@ -6,8 +6,9 @@ limit   = 3
 post_news = (robot, limit) ->
 #  url = 'http://feed.rssad.jp/rss/nikkansports/professional/atom.xml'
 	options =
-	  url: "http://news.yahoo.co.jp/pickup/rss.xml"
-		timeout: 2000
+#	  url: "http://news.yahoo.co.jp/pickup/rss.xml"
+    url: "http://feed.rssad.jp/rss/nikkansports/professional/atom.xml"
+    timeout: 2000
 		headers: {'user-agent': 'node title fetcher'}
   request options, (error, response, body) ->
 	  to_json body, (err, data) =>
@@ -20,7 +21,7 @@ post_news = (robot, limit) ->
       robot.send {room:"general"}, article
 
 module.exports = (robot) ->
-  new cronJob('0 5 2 * * *', () =>
+  new cronJob('0 9 2 * * *', () =>
 #      robot.send {room:"general"}, "さーん！", null ,true, "Asia/Tokyo"
 #      robot.send post_topic_news(robot,limit)
     post_news(robot, limit), null, true, "Asia/Tokyo"
