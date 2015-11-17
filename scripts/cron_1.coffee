@@ -6,7 +6,7 @@ limit   = 3
 post_news = (robot, limit) ->
 #  url = 'http://feed.rssad.jp/rss/nikkansports/professional/atom.xml'
 	options =
-	  url: 'http://news.yahoo.co.jp/pickup/rss.xml'
+	  url: "http://news.yahoo.co.jp/pickup/rss.xml"
 		timeout: 2000
 		headers: {'user-agent': 'node title fetcher'}
   request options, (error, response, body) ->
@@ -15,12 +15,12 @@ post_news = (robot, limit) ->
 			for id, entry of data["feed"].entry when id < limit
 			  title = entry.title
 				link  = entry.id
-				article += "{#link}\n" unless /~PR.*/.test(title)
+				article += "#{link}\n" unless /~PR.*/.test(title)
 #		  robot.send {room:"general"}, article, null, true, "Asis/Tokyo"
       robot.send {room:"general"}, article
 
 module.exports = (robot) ->
-  new cronJob('0 53 1 * * *', () =>
+  new cronJob('0 58 1 * * *', () =>
 #      robot.send {room:"general"}, "さーん！", null ,true, "Asia/Tokyo"
 #      robot.send post_topic_news(robot,limit)
       post_news(robot, limit), null, true, "Asia/Tokyo"
