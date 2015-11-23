@@ -2,6 +2,7 @@ cronJob = require('cron').CronJob
 to_json = require('xmljson').to_json
 request = require 'request'
 limit   = 2
+article = ""
 
 post_news = (limit, article) ->
 #  url = 'http://feed.rssad.jp/rss/nikkansports/professional/atom.xml'
@@ -20,11 +21,11 @@ post_news = (limit, article) ->
 #        robot.send {room:"general"}, article
 
 module.exports = (robot) ->
-  new cronJob( '0 13 23 * * *', () =>
+  new cronJob( '0 16 23 * * *', () =>
     robot.send {room:"general"}, post_news(limit, article), null ,true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 14 23 * * *', () =>
+  new cronJob( '0 17 23 * * *', () =>
     robot.send {room:"general"}, "にぃ！", null ,true, "Asia/Tokyo"
   ).start()
 
