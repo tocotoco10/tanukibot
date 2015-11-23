@@ -21,8 +21,8 @@ post_news = (robot, limit) ->
       robot.send {room:"general"}, article
 
 module.exports = (robot) ->
-  new cronJob('0 02 19 * * *', () =>
-      robot.send {room:"general"}, "さーん！", null ,true, "Asia/Tokyo"
+  new cronJob('0 03 19 * * *', () =>
+    robot.send {room:"general"}, "さーん！", null ,true, "Asia/Tokyo"
 #      robot.send post_topic_news(robot,limit)
 
 #  new cronJob('0 44 15 * * *', post_news(robot, limit), null, true, "Asia/Tokyo"),start()
