@@ -17,14 +17,14 @@ post_news = (robot, limit) ->
 			  title = entry.title
 				link  = entry.id
 				article += "#{link}\n" #unless /^PR.*/.test(title)
-      robot.send {room:"general"}, article
+#      robot.send {room:"general"}, article
 
 module.exports = (robot) ->
-  new cronJob( '0 30 19 * * *', () =>
+  new cronJob( '0 32 19 * * *', () =>
     robot.send {room:"general"}, "いち！", null ,true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 31 19 * * *', () =>
+  new cronJob( '0 33 19 * * *', () =>
     robot.send {room:"general"}, "にぃ！", null ,true, "Asia/Tokyo"
   ).start()
 
