@@ -31,12 +31,12 @@ module.exports = (robot) ->
 #       null, true, "Asis/Tokyo"
 #  ).start()
 
-  new cronJob( '0 05 19 * * *', () =>
-      robot.send {room:"general"}, "いち！", null ,true, "Asia/Tokyo"
+  new cronJob( '0 11 19 * * *', () =>
+    robot.send {room:"general"}, "いち！", null ,true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 06 19 * * *', () =>
-      robot.send {room:"general"}, "にぃ！", null ,true, "Asia/Tokyo"
+  new cronJob( '0 12 19 * * *', () =>
+    robot.send {room:"general"}, "にぃ！", null ,true, "Asia/Tokyo"
   ).start()
 
 
