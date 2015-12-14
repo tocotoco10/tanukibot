@@ -21,12 +21,12 @@ post_news = (limit) ->
 #        robot.send {room:"general"}, article
 
 module.exports = (robot) ->
-  new cronJob( '0 30 0 * * *', () =>
+  new cronJob( '0 32 0 * * *', () =>
     memo = post_news(limit)
     robot.send {room:"general"}, memo, null ,true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 31 0 * * *', () =>
+  new cronJob( '0 33 0 * * *', () =>
     robot.send {room:"general"}, "にぃ！", null ,true, "Asia/Tokyo"
   ).start()
 
