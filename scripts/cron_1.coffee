@@ -4,28 +4,29 @@ request = require 'request'
 limit   = 2
 
 post_news = (limit) ->
+  return limit
 #  url = 'http://feed.rssad.jp/rss/nikkansports/professional/atom.xml'
-	options =
+#	options =
 #	  url: "http://news.yahoo.co.jp/pickup/rss.xml"
-    url: "http://feed.rssad.jp/rss/nikkansports/professional/atom.xml"
-    timeout: 2000
-		headers: {'user-agent': 'node title fetcher'}
-  request options, (error, response, body) ->
-	  to_json body, (err, data) =>
-		  article = "Yahooトピック\n"
-			for id, entry of data["feed"].entry when id < limit
-			  title = entry.title
-				link  = entry.id
-				article += "#{link}\n" unless /^PR.*/.test(title)
+#    url: "http://feed.rssad.jp/rss/nikkansports/professional/atom.xml"
+#    timeout: 2000
+#		headers: {'user-agent': 'node title fetcher'}
+#  request options, (error, response, body) ->
+#	  to_json body, (err, data) =>
+#		  article = "Yahooトピック\n"
+#			for id, entry of data["feed"].entry when id < limit
+#			  title = entry.title
+#				link  = entry.id
+#				article += "#{link}\n" unless /^PR.*/.test(title)
 #        robot.send {room:"general"}, article
 
 module.exports = (robot) ->
-  new cronJob( '0 25 0 * * *', () =>
-#    memo = post_news(limit)
-    robot.send {room:"general"}, "いーちっ！", null ,true, "Asia/Tokyo"
+  new cronJob( '0 30 0 * * *', () =>
+    memo = post_news(limit)
+    robot.send {room:"general"}, memo, null ,true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 26 0 * * *', () =>
+  new cronJob( '0 31 0 * * *', () =>
     robot.send {room:"general"}, "にぃ！", null ,true, "Asia/Tokyo"
   ).start()
 
