@@ -22,21 +22,10 @@ post_news = (limit) ->
 #        robot.send {room:"general"}, article
 
 module.exports = (robot) ->
-  new cronJob( '0 47 0 * * *', () =>
-#    memo = post_news(limit)
+  new cronJob( '0 53 0 * * *', () =>
     robot.send {room:"general"}, post_news(limit), null ,true, "Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 48 0 * * *', () =>
+  new cronJob( '0 54 0 * * *', () =>
     robot.send {room:"general"}, "にぃ！", null ,true, "Asia/Tokyo"
   ).start()
-
-
-#module.exports = (robot) ->
-#  robot.respond /start cron_1/i, (msg) ->
-#  	msg.send "『CronJob_1』ジョブ開始しますね..."
-#	  cronJob.start()
-#	
-#	robot.respond /stop cron_1/i, (msg) ->
-#	  msg.send "『CronJob_1』ジョブ停止しますね..."
-#	  cronJob.stop()
