@@ -3,7 +3,7 @@ to_json = require('xmljson').to_json
 request = require 'request'
 
 post_news = (limit) ->
- limit = limit + 1
+ limit
 
 #  url = 'http://feed.rssad.jp/rss/nikkansports/professional/atom.xml'
 #	options =
