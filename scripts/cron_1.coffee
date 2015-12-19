@@ -16,15 +16,15 @@ post_news = (limit) ->
 
   request options, (error, response, body) ->
     to_json body, (err, data) =>
-      limit = "今日のニュース\n"
+      article = "今日のニュース\n"
       for id, entry of data["feed"].entry when id < 3
 		    title = entry.title
 				link  = entry.id
-				limit += "#{link}\n" unless /^PR.*/.test(title)
-		  limit = limit
+				article += "#{link}\n" unless /^PR.*/.test(title)
+		  limit = article
 
 module.exports = (robot) ->
-  new cronJob( '0 54 1 * * *', () =>
+  new cronJob( '0 06 2 * * *', () =>
     robot.send {room:"general"}, post_news(limit), null ,true, "Asia/Tokyo"
   ).start()
 
