@@ -8,7 +8,7 @@ request = require 'request'
 limit   = ""
 
 module.exports = (robot) ->
-  new cronJob( '0 48 0 * * *', () =>
+  new cronJob( '0 00 8 * * *', () =>
     url = "http://b.hatena.ne.jp/hotentry/it.rss"
     options =
       url: url
@@ -20,10 +20,26 @@ module.exports = (robot) ->
         for id, item of data["rdf:RDF"].item
           title = item.title
           link  = item.link
-          article += "#{title} #{link}\n"
+          article += "#{title} #{link}\n\n"
         robot.send {room:"general"}, article, null, true, "Asia/Tokyo"
   ).start()
-#
-#  new cronJob( '0 55 1 0 * * *', () =>
-#    robot.send {room:"general"}, "にぃ！", null ,true, "Asia/Tokyo"
-#  ).start()
+
+  new cronJob( '0 00 6 0 * * 1-5', () =>
+    robot.send {room:"general"}, "朝ですよ〜。起きてますか？", null ,true, "Asia/Tokyo"
+  ).start()
+
+  new cronJob( '0 30 7 0 * * 0,6', () =>
+    robot.send {room:"general"}, "今日は週末やからもうちょい寝はったら？", null ,true, "Asia/Tokyo"
+  ).start()
+
+  new cronJob( '0 00 15 0 * * 1-5', () =>
+    robot.send {room:"general"}, "15:00をお知らせしますよ。\nお茶でもいかがっすか？", null ,true, "Asia/Tokyo"
+  ).start()
+
+  new cronJob( '0 30 17 0 * * 1,2,4', () =>
+    robot.send {room:"general"}, "17:30 定時でっせ。\n今日は残業っすか？", null ,true ,"Asia/Tokyo"
+  ).start()
+
+  new cronJob( '0 30 17 0 * * 3,5', () =>
+    robot.send {room:"general"}, "17:30 定時をお知らせします。\n今日は（いちおう）定時退社日ですよ〜。", null ,true ,"Asia/Tokyo"
+  ).start()
