@@ -8,7 +8,7 @@ request = require 'request'
 limit   = ""
 
 module.exports = (robot) ->
-  new cronJob( '0 43 0 * * *', () =>
+  new cronJob( '0 48 0 * * *', () =>
     url = "http://b.hatena.ne.jp/hotentry/it.rss"
     options =
       url: url
@@ -16,11 +16,11 @@ module.exports = (robot) ->
       headers: {'user-agent': 'node title fetcher'}
     request options, (error, response, body) ->
       to_json body, (err, data) =>
-        article = "はてブITカテゴリ ホットエントリ¥n"
+        article = "はてブITカテゴリ ホットエントリ\n"
         for id, item of data["rdf:RDF"].item
           title = item.title
           link  = item.link
-          article += "#{title} #{link}¥n"
+          article += "#{title} #{link}\n"
         robot.send {room:"general"}, article, null, true, "Asia/Tokyo"
   ).start()
 #
