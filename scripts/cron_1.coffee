@@ -8,9 +8,9 @@ request = require 'request'
 limit   = ""
 
 module.exports = (robot) ->
-  new cronJob( '0 37 0 * * *', () =>
+  new cronJob( '0 39 0 * * *', () =>
     url = "http://b.hatena.ne.jp/hotentry/it.rss"
-		options =
+    options =
       url: url
       timeout: 2000
       headers: {'user-agent': 'node title fetcher'}
