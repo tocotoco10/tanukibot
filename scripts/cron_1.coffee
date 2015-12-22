@@ -43,3 +43,8 @@ module.exports = (robot) ->
   new cronJob( '0 30 17 0 * 3,5', () =>
     robot.send {room:"general"}, "17:30 定時をお知らせします。\n今日は（いちおう）定時退社日ですポン〜。", null ,true ,"Asia/Tokyo"
   ).start()
+
+
+  new cronJob( '0 20 23 0 * 1-5', () =>
+    robot.send {room:"general"}, "23:20 よるをお知らせします。\n今日はXX日ポン〜。", null ,true ,"Asia/Tokyo"
+  ).start()
