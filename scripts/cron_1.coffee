@@ -49,8 +49,8 @@ module.exports = (robot) ->
     robot.send {room:"general"}, "23:55 今日も１日お疲れでしポン。\nそろそろおやすみ.な..さ...(_ _)zZZ", null ,true ,"Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 6 0 * * *', () =>
-    url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=140010"
+  new cronJob( '0 20 0 * * *', () =>
+    url = "http://weather.livedoor.com/forecast/rss/area/140010.xml"
     options =
       url: url
       timeout: 2000
