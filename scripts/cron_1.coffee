@@ -49,7 +49,7 @@ module.exports = (robot) ->
     robot.send {room:"general"}, "23:55 今日も１日お疲れでしポン。\nそろそろおやすみ.な..さ...(_ _)zZZ", null ,true ,"Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 9 1 * * *', () =>
+  new cronJob( '0 18 1 * * *', () =>
     url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=140010"
     options =
       url: url
@@ -59,7 +59,7 @@ module.exports = (robot) ->
       day = 0
       title     = json['title']
       link      = json['link']
-			weather   = json['forecasts'].first
+			weather   = json['forecasts'][day]
       forecast  = "[#{weather['date']}の#{title}](#{link})は「#{weather['telop']}」です。"
       robot.send {room:"test"}, forecast, null, true, "Asia/Tokyo"
   ).start()
