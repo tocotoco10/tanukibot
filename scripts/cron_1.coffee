@@ -49,19 +49,13 @@ module.exports = (robot) ->
     robot.send {room:"general"}, "23:55 今日も１日お疲れでしポン。\nそろそろおやすみ.な..さ...(_ _)zZZ", null ,true ,"Asia/Tokyo"
   ).start()
 
-  new cronJob( '0 30 0 * * *', () =>
-    url = "http://weather.livedoor.com/forecast/rss/area/140010.xml"
+  new cronJob( '0 55 0 * * *', () =>
+    url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=140010"
     options =
       url: url
       timeout: 2000
-      headers: {'user-agent': 'node title fetcher'}
     request options, (error, response, body) ->
-      to_json body, (err, data) =>
-        article = "ヨコハマの天気\n\n"
-        for id, item of data["channel"].item
-          title = item.title
-          link  = item.link
-          weather = item.forecasts
-        article += "#{title} #{link}\n\n"
-        robot.send {room:"test"}, article, null, true, "Asia/Tokyo"
+      json = JSON.parse body
+      forecast = json['forecasts'][day]['telop']
+      robot.send {room:"test"}, forecast, null, true, "Asia/Tokyo"
   ).start()
