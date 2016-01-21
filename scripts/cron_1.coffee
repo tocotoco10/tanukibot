@@ -45,7 +45,7 @@ module.exports = (robot) ->
   ).start()
 
 
-  new cronJob( '0 55 23 * * 1-5', () =>
+  new cronJob( '0 1 0 * * 1-5', () =>
     robot.send {room:"general"}, "23:55 今日も１日お疲れでしポン。\nそろそろおやすみ.な..さ...(_ _)zZZ", null ,true ,"Asia/Tokyo"
   ).start()
 
@@ -61,14 +61,6 @@ module.exports = (robot) ->
       link      = json['link']
 			text      = json['description']['text']
 			weather   = json['forecasts'][day]
-      attachments = [{
-        title: title,
-        title_link: link,
-        test :text,
-        image_url: weather['image']['url'],
-        color: "#7CD197"
-      }]
-      forecast  = "<#{weather['date']}の#{title}>は「#{weather['telop']}」です。\n#{attachments: attachments}"
-      robot.send {room:"test"}, forecast, null, true, "Asia/Tokyo"
-      robot.emit "slack.attachment", attachments 
+      forecast  = "<#{weather['date']}の#{title}>は「#{weather['telop']}」です。"
+      robot.send {room:"test"}, forecast, null, true, "Asia/Tokyo" 
   ).start()
